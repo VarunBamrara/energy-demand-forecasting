@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Energy Model Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+        .prediction {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Predict Energy Outcome</h2>
+        <form method="POST">
+            <input type="text" name="feature1" placeholder="UJVNL Generation" required>
+            <input type="text" name="feature2" placeholder="Central Share & VP Share" required>
+            <input type="text" name="feature3" placeholder="Energy Availability in UK" required>
+            <input type="text" name="feature4" placeholder="Energy Surplus/Shortage" required>
+            <input type="text" name="feature5" placeholder="IEX/PXIL Drawl" required>
+            <input type="text" name="feature6" placeholder="Banking Power to/from Other States" required>
+            <input type="text" name="feature7" placeholder="Planned/Emergency Rostering" required>
+            <input type="text" name="feature8" placeholder="Energy Overdrawl/Underdrawl" required>
+            <input type="text" name="feature9" placeholder="U.I. Rate (Rs.)" required>
+            <input type="text" name="feature10" placeholder="Appx. Amount (Crores)" required>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction is not none %}
+            <div class="prediction">Gross Energy Demand in UK: {{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
